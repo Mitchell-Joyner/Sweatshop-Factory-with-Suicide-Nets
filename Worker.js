@@ -2,11 +2,14 @@ const random = require('./Random.js');
 
 const worker = function(){
   let id = "w-" + random().digit(8);
-  let wage = random().continousRange(8,50);
-  let hours = random().continousRange(4,7)*5;
+  let wage = random().discreteRangeIn(8,50);
+  let hours = random().discreteRangeIn(4,7)*5;
 
   function pay(){
-    console.log(wage*8, wage*40, wage*2080)
+    let weeklypay = (hours*wage)
+    let dailypay = (hours*wage)/5
+    let yearlypay = (hours*wage)*52
+    return [dailypay, weeklypay, yearlypay]
   }
 };
 module.exports = moduleName;
